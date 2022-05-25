@@ -1,6 +1,8 @@
 import os
 import sys
 import shutil
+import borndayforewer
+import use_functions
 
 
 def create():
@@ -9,18 +11,34 @@ def create():
         print('Данная папка уже существует в данной директории')
     else:
         os.mkdir(name)
+        print(f'Создана папка {name} по адресу {os.getcwd()}')
+
 
 def remove():
     name = input('Введите название папки: ')
-    os.rmdir(name)
-    print('Удаление завршено')
+    if name in os.listdir():
+        os.rmdir(name)
+        if name + '_copy' in os.listdir():
+            all_dir = input('Удалить копии данной директории? y/n ')
+            if all_dir == 'y':
+                os.rmdir(name + '_copy')
+        print('Удаление завершено')
+    else:
+        print('Папка не найдена')
+
+
 
 def copy():
     name = input('Выберете файл/папку: ')
-    shutil.copytree(name,  f'{name}_copy')
+    if name in os.listdir():
+        shutil.copytree(name,  f'{name}_copy')
+    else:
+        print('Указанное имя не найдено')
+
 
 def view():
     print(os.listdir())
+
 
 def view_file():
     file_list = []
@@ -29,6 +47,7 @@ def view_file():
             file_list.append(el)
     print(file_list)
 
+
 def view_dir():
     dir_list = []
     for el in os.listdir():
@@ -36,9 +55,9 @@ def view_dir():
             dir_list.append(el)
     print(dir_list)
 
+
 def view_sys_info():
     print(sys.platform)
-
 
 
 def start_manager():
@@ -66,8 +85,15 @@ def start_manager():
         elif choice == '6':
             view_sys_info()
         elif choice == '7':
-            view_sys_info()
-
+            print('Макс Лазунин')
+        elif choice == '8':
+            borndayforewer.mode_chose()
+        elif choice == '9':
+            use_functions.create_account()
+        elif choice == '10':
+            print(os.getcwd(), 'Текущий путь')
+            os.chdir(input('Введите путь для смены директории: '))
+            print(os.getcwd(), 'Изменённый путь')
         elif choice == '11':
             work_trigger = 'n'
 
