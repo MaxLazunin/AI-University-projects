@@ -10,22 +10,14 @@ import borndayforewer
 
 def test_view_sys_info():
     assert file_manager.view_sys_info() == 'win32'
-#
-#
-# def view_file():
-#     file_list = []
-#     for el in os.listdir():
-#         if '.' in el:
-#             file_list.append(el)
-#     print(file_list)
-#
-#
-# def view_dir():
-#     dir_list = []
-#     for el in os.listdir():
-#         if '.' not in el:
-#             dir_list.append(el)
-#     print(dir_list)
+
+
+def test_view_file():
+    assert file_manager.view_file() == ['.idea', '.pytest_cache', 'borndayforewer.py', 'file_manager.py', 'pyvenv.cfg', 'test_filemanager.py', 'test_python.py', 'use_functions.py']
+
+
+def test_view_dir():
+    assert file_manager.view_dir() == ['Include', 'Lib', 'Scripts', '__pycache__']
 #
 #
 # def view_sys_info():

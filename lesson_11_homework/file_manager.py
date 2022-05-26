@@ -44,7 +44,7 @@ def view_file():
     for el in os.listdir():
         if '.' in el:
             file_list.append(el)
-    print(file_list)
+    return file_list
 
 
 def view_dir():
@@ -52,7 +52,7 @@ def view_dir():
     for el in os.listdir():
         if '.' not in el:
             dir_list.append(el)
-    print(dir_list)
+    return dir_list
 
 
 def view_sys_info():
@@ -78,9 +78,9 @@ def start_manager():
         elif choice == '3':
             print(view())
         elif choice == '4':
-            view_dir()
+            print(view_dir())
         elif choice == '5':
-            view_file()
+            print(view_file())
         elif choice == '6':
             print(view_sys_info())
         elif choice == '7':
