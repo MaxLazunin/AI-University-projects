@@ -15,11 +15,13 @@
 4. Формат сохранения количество файлов и способ можно выбрать самостоятельно.
 """
 import json
+import os
 
 class Balance:
 
     balance = ''
     history = {'Название покупки': 'Стоимость'}
+
     def __init__(self):
         print('-' * 10 + '  Начало операции  ' + '-' * 10)
         try:
@@ -84,6 +86,10 @@ def create_account():
         if choice == '0':
             remake = input('Вы уверены, что хотите пересоздать счёт? y/n: ')
             if remake == 'y':
+                with open('balance.txt', 'w') as f:
+                    f.write('0')
+                with open('history.json', 'w') as f:
+                    json.dump({'Название покупки': 'Стоимость'}, f)
                 my_balance = Balance()
             else:
                 continue
