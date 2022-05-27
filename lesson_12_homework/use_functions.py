@@ -27,7 +27,7 @@ class Balance:
         try:
             with open('balance.txt', 'r') as f:
                 self.balance = int(f.read())
-        except(FileNotFoundError):
+        except FileNotFoundError :
             print('Создадим счёт')
             with open('balance.txt', 'w') as f:
                 f.write('0')
@@ -36,7 +36,7 @@ class Balance:
         try:
             with open('history.json', 'rb') as f:
                 self.history = json.load(f)
-        except(FileNotFoundError):
+        except FileNotFoundError:
             print('Создадим историю расходов')
             with open('history.json', 'w') as f:
                 json.dump(self.history, f)
