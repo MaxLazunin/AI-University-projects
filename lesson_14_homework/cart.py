@@ -10,10 +10,11 @@ class Card:
         self.numbers = []
         self.indexes = []
         self.card = [list(' ' * 20), list(' ' * 20), list(' ' * 20)]
-        self.string_1 = []
         self.__number_generator()
         self.__card_form_generator()
         self.numbers = sorted(self.numbers)
+
+    # def test
 
     def __number_generator(self):
         numbers = set()
@@ -22,7 +23,7 @@ class Card:
             number = random.randint(1, 91)
             numbers.add(number)
         numbers = list(numbers)
-        for i in range (3):
+        for i in range(3):
             self.numbers.append(sorted(list(numbers[i*5:(i+1)*5])))
 
     def __string_generator(self):
@@ -39,11 +40,10 @@ class Card:
     def cross_numeral(self, numeral):
         try:
             for i in range(3):
-                print('there')
                 index = self.numbers[i].index(numeral)
-                self.numbers[i] = self.numbers[i].insert(index, 'x')
+                self.numbers[i][index] = 'x'
                 self.card_generator()
-                print(f'Отлично! Такой номер есть у игрока {self.name}')
+                print(f'Отлично! Номер {numeral} есть у игрока{self.name}')
         except ValueError:
             print(f'Такого номера нет в карточке игрока{self.name}')
 
@@ -78,3 +78,11 @@ class Card:
 if __name__ == '__main__':
     card = Card()
     card.card_generator()
+    card.cross_numeral(5)
+    card.cross_numeral(6)
+    card.cross_numeral(7)
+    card.cross_numeral(8)
+    card.cross_numeral(1)
+    card.cross_numeral(2)
+    card.cross_numeral(3)
+    card.cross_numeral(4)
