@@ -13,14 +13,14 @@ class Card:
         self.__number_generator()
         self.__card_form_generator()
         self.numbers = sorted(self.numbers)
+        self.check_win = False
 
     # def test
 
     def __number_generator(self):
         numbers = set()
-
         while len(numbers) < 15:
-            number = random.randint(1, 91)
+            number = random.randint(1, 90)
             numbers.add(number)
         numbers = list(numbers)
         for i in range(3):
@@ -38,14 +38,16 @@ class Card:
             self.__string_generator()
 
     def cross_numeral(self, numeral):
-        try:
-            for i in range(3):
+        for i in range(3):
+            if numeral in self.numbers[i]:
                 index = self.numbers[i].index(numeral)
                 self.numbers[i][index] = 'x'
                 self.card_generator()
-                print(f'Отлично! Номер {numeral} есть у игрока{self.name}')
-        except ValueError:
-            print(f'Такого номера нет в карточке игрока{self.name}')
+                answer = f'Отлично! Номер {numeral} есть у игрока{self.name}'
+                break
+            else:
+                answer = f'Такого номера нет в карточке игрока{self.name}'
+        print(answer)
 
     def card_generator(self):
         for i in range(3):
@@ -78,11 +80,11 @@ class Card:
 if __name__ == '__main__':
     card = Card()
     card.card_generator()
-    card.cross_numeral(5)
-    card.cross_numeral(6)
-    card.cross_numeral(7)
-    card.cross_numeral(8)
-    card.cross_numeral(1)
-    card.cross_numeral(2)
-    card.cross_numeral(3)
-    card.cross_numeral(4)
+    card.cross_numeral(25)
+    card.cross_numeral(26)
+    card.cross_numeral(27)
+    card.cross_numeral(28)
+    card.cross_numeral(21)
+    card.cross_numeral(22)
+    card.cross_numeral(23)
+    card.cross_numeral(24)
